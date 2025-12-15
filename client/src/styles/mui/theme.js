@@ -1,4 +1,4 @@
-const { createTheme } = require("@mui/material");
+const { createTheme, } = require("@mui/material/styles");
 
 //colour variables
 const backgroundColour = "#BA5870";
@@ -15,7 +15,7 @@ const textColourdark = "#BA5870";
 const highlightdark = "#CAB6BA";
 
 //theme
-let theme = createTheme({
+let lighttheme = createTheme({
     palette: {
         mode: "light",
         background: {
@@ -39,6 +39,27 @@ let theme = createTheme({
         },
 
     },
+    typography: {
+    h1: {
+      fontFamily: 'Montserrat',
+    },
+    fontFamily: 'Montserrat',
+    body1: {
+      fontFamily: 'Raleway',
+    },
+    body2: {
+      fontFamily: 'Raleway',
+    },
+    subtitle1: {
+      fontFamily: 'Raleway',
+    },
+    subtitle2: {
+      fontFamily: 'Raleway',
+    },
+    button: {
+      fontWeight: 500,
+    },
+  },
 });
 
 
@@ -67,6 +88,28 @@ let Darktheme = createTheme({
         },
 
     },
+    typography: {
+    h1: {
+      fontFamily: 'Montserrat',
+    },
+    fontFamily: 'Montserrat',
+    body1: {
+      fontFamily: 'Raleway',
+    },
+    body2: {
+      fontFamily: 'Raleway',
+    },
+    subtitle1: {
+      fontFamily: 'Raleway',
+    },
+    subtitle2: {
+      fontFamily: 'Raleway',
+    },
+    button: {
+      fontWeight: 500,
+    },
+  },
 });
 
-export{ theme,Darktheme};
+
+export{ lighttheme,Darktheme};

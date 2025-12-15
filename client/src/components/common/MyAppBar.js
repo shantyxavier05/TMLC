@@ -9,21 +9,29 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { Darktheme, theme } from "@src/styles/mui/theme";
+//import { CssBaseline, ThemeProvider } from "@mui/material";
+//import { Darktheme, theme } from "@src/styles/mui/theme";
 import { DarkMode } from "@mui/icons-material";
-import { useState } from "react";
+//import { useState } from "react";
+
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { useTheme } from "@mui/material";
 
 
-
+import { useDispatch, useSelector } from "react-redux";
+import { selectTheme, toggleTheme } from "@src/redux/reducers/themeReducer";
 
 export default function MyAppBar() {
- const[currentTheme,setCurrentTheme] = useState("dark");
+ {/*const[currentTheme,setCurrentTheme] = useState("dark");*/}
+
+   const dispatch = useDispatch();
+  const currentTheme = useSelector(selectTheme).activeTheme;
+ const theme=useTheme()
   return (
     
     <>
-      <ThemeProvider theme={currentTheme === "dark" ? Darktheme : theme}>
-        <CssBaseline/>
+     {/* <ThemeProvider theme={currentTheme === "dark" ? Darktheme : theme}>*/}
+        {/*<CssBaseline/>*/}
       <div>
        <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -46,23 +54,24 @@ export default function MyAppBar() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-            onClick={() =>
-                setCurrentTheme(currentTheme === "dark" ? "light" : "dark")
-            }
+            onClick={() => dispatch(toggleTheme())}
+            
+      
           >
-            <DarkMode />
+            {currentTheme==="dark" ? <LightModeIcon />: <DarkMode />}
+            
           </IconButton>
 
           <Link href="/blog">
           
-          <Button color="inherit">Blog</Button>
+          <Button sx={{ color: theme.palette.icon.main }}>Blog</Button>
           </Link>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
       </div>
-      </ThemeProvider>
+      {/*</ThemeProvider>*/}
      
     </>
   );
