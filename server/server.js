@@ -19,9 +19,11 @@ mongoose
 
 // Models
 require("./models/film");
+require("./models/user");
 
 // Routes
 require("./routes/moviesRoutes")(app);
+require("./routes/autoRoutes")(app);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
